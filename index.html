@@ -13,7 +13,6 @@
     --card-back: #1e1218;
     --card-border: #3d1f2a;
     --gold: #c9973a;
-    --gold-light: #e8b85a;
     --red: #c0392b;
     --red-light: #e74c3c;
     --blue: #2980b9;
@@ -21,10 +20,10 @@
     --water: #5dade2;
     --text: #e8ddd2;
     --text-dim: #8a7570;
-    --glow-red: rgba(192, 57, 43, 0.4);
-    --glow-blue: rgba(41, 128, 185, 0.4);
-    --glow-water: rgba(93, 173, 226, 0.5);
-    --glow-gold: rgba(201, 151, 58, 0.4);
+    --glow-red: rgba(192,57,43,0.4);
+    --glow-blue: rgba(41,128,185,0.4);
+    --glow-water: rgba(93,173,226,0.5);
+    --glow-gold: rgba(201,151,58,0.4);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -38,7 +37,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 16px;
     overflow-x: hidden;
   }
 
@@ -53,30 +52,26 @@
 
   h1 {
     font-family: 'Cinzel', serif;
-    font-size: clamp(1.4rem, 4vw, 2.2rem);
+    font-size: clamp(1.6rem, 5vw, 2.4rem);
     font-weight: 900;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--gold);
     text-shadow: 0 0 30px var(--glow-gold), 0 2px 4px rgba(0,0,0,0.8);
-    margin-bottom: 6px;
+    margin-bottom: 10px;
     text-align: center;
   }
 
-  .subtitle {
-    font-style: italic;
-    font-size: 1rem;
-    color: var(--text-dim);
-    letter-spacing: 0.05em;
-    margin-bottom: 20px;
-    text-align: center;
+  .divider {
+    width: 80px; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 0 auto 14px;
   }
 
-  /* STATUS BAR */
   .status-bar {
     display: flex;
-    gap: 24px;
-    margin-bottom: 20px;
+    gap: 20px;
+    margin-bottom: 14px;
     flex-wrap: wrap;
     justify-content: center;
   }
@@ -88,126 +83,124 @@
     background: var(--surface);
     border: 1px solid var(--card-border);
     border-radius: 8px;
-    padding: 10px 18px;
-    min-width: 100px;
+    padding: 8px 16px;
+    min-width: 90px;
   }
 
   .stat-label {
     font-family: 'Cinzel', serif;
-    font-size: 0.8rem;
+    font-size: 0.58rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--text-dim);
-    margin-bottom: 4px;
+    margin-bottom: 3px;
   }
 
-  .stat-value {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--gold);
-  }
-
-  .stat-value.red { color: var(--red-light); }
+  .stat-value { font-size: 1.5rem; font-weight: 700; }
+  .stat-value.red  { color: var(--red-light); }
   .stat-value.blue { color: var(--blue-light); }
 
-  /* LOCK BANNER */
-  .lock-banner {
+  /* BANNERS */
+  .banner {
     display: none;
+    border-radius: 12px;
+    padding: 14px 20px;
+    text-align: center;
+    margin-bottom: 14px;
+    max-width: 440px;
+    width: 100%;
+  }
+  .banner.visible { display: block; }
+
+  .banner-lock {
     background: linear-gradient(135deg, #1a0505, #2a0808);
     border: 1px solid var(--red);
-    border-radius: 12px;
-    padding: 16px 24px;
-    text-align: center;
-    margin-bottom: 20px;
     box-shadow: 0 0 24px var(--glow-red);
-    max-width: 460px;
-    width: 100%;
   }
-
-  .lock-banner.visible { display: block; }
-
-  .lock-banner .lock-icon { font-size: 2rem; margin-bottom: 6px; }
-  .lock-banner .lock-title {
-    font-family: 'Cinzel', serif;
-    font-size: 1rem;
-    color: var(--red-light);
-    letter-spacing: 0.1em;
-    margin-bottom: 4px;
-  }
-  .lock-banner .lock-desc {
-    font-size: 1.2rem;
-    color: var(--text-dim);
-    font-style: italic;
-    line-height: 1.5;
-  }
-  .lock-banner .unlock-time {
-    font-size: 1.1rem;
-    color: var(--gold);
-    margin-top: 8px;
-    font-weight: 700;
-  }
-
-  /* WIN BANNER */
-  .win-banner {
-    display: none;
+  .banner-win {
     background: linear-gradient(135deg, #030d1a, #061628);
     border: 1px solid var(--blue);
-    border-radius: 12px;
-    padding: 16px 24px;
-    text-align: center;
-    margin-bottom: 20px;
     box-shadow: 0 0 24px var(--glow-blue);
-    max-width: 460px;
-    width: 100%;
   }
 
-  .win-banner.visible { display: block; }
-  .win-banner .win-icon { font-size: 2rem; margin-bottom: 6px; }
-  .win-banner .win-title {
+  .banner-icon { font-size: 1.8rem; margin-bottom: 4px; }
+
+  .banner-title {
     font-family: 'Cinzel', serif;
     font-size: 1rem;
-    color: var(--water);
     letter-spacing: 0.1em;
     margin-bottom: 4px;
   }
-  .win-banner .win-desc {
-    font-size: 1.2rem;
+  .banner-lock .banner-title { color: var(--red-light); }
+  .banner-win  .banner-title { color: var(--water); }
+
+  .banner-desc {
+    font-size: 1.15rem;
     color: var(--text-dim);
     font-style: italic;
     line-height: 1.5;
   }
 
-  /* GRID */
-  .grid-wrap {
-    position: relative;
+  .banner-time {
+    font-size: 1.05rem;
+    color: var(--gold);
+    margin-top: 7px;
+    font-weight: 700;
+    font-family: 'Cinzel', serif;
   }
+
+  /* PROGRESS DOTS */
+  .progress-row {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 14px;
+  }
+  .progress-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .progress-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+  .dots { display: flex; gap: 6px; }
+  .dot {
+    width: 13px; height: 13px;
+    border-radius: 50%;
+    border: 1.5px solid var(--card-border);
+    background: transparent;
+    transition: all 0.3s;
+  }
+  .dot.water.filled { background: var(--water); border-color: var(--water); box-shadow: 0 0 8px var(--glow-water); }
+  .dot.cross.filled { background: var(--red);   border-color: var(--red);   box-shadow: 0 0 8px var(--glow-red); }
+
+  /* GRID */
+  .grid-wrap { position: relative; }
 
   .grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-    width: min(96vw, 500px);
+    gap: 10px;
+    width: min(94vw, 480px);
   }
 
-  /* CARD */
-  .card {
-    aspect-ratio: 1;
-    perspective: 600px;
-    cursor: pointer;
-  }
-
+  .card { aspect-ratio: 1; perspective: 600px; cursor: pointer; }
   .card.revealed { cursor: default; pointer-events: none; }
   .card.disabled { cursor: not-allowed; opacity: 0.5; pointer-events: none; }
 
   .card-inner {
-    width: 100%;
-    height: 100%;
+    width: 100%; height: 100%;
     position: relative;
     transform-style: preserve-3d;
-    transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.55s cubic-bezier(0.4,0,0.2,1);
     border-radius: 10px;
   }
-
   .card.revealed .card-inner { transform: rotateY(180deg); }
 
   .card-front, .card-back {
@@ -218,7 +211,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2.4rem;
+    font-size: 2.2rem;
   }
 
   .card-front {
@@ -227,12 +220,10 @@
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 2px 8px rgba(0,0,0,0.5);
     transition: border-color 0.2s, box-shadow 0.2s;
   }
-
   .card:not(.revealed):not(.disabled):hover .card-front {
     border-color: var(--gold);
     box-shadow: 0 0 16px var(--glow-gold), inset 0 1px 0 rgba(255,255,255,0.08);
   }
-
   .card-front::after {
     content: '?';
     font-family: 'Cinzel', serif;
@@ -245,139 +236,25 @@
     background: var(--surface);
     border: 1px solid var(--card-border);
     transform: rotateY(180deg);
-    flex-direction: column;
-    gap: 4px;
-    padding: 6px;
   }
 
-  /* Card types */
-  .card-back.water {
-    border-color: var(--water);
-    box-shadow: 0 0 20px var(--glow-water);
-    background: linear-gradient(135deg, #030d14, #04141f);
+  .card-back.water    { border-color: var(--water); box-shadow: 0 0 20px var(--glow-water); background: linear-gradient(135deg,#030d14,#04141f); }
+  .card-back.cross    { border-color: var(--red);   box-shadow: 0 0 20px var(--glow-red);   background: linear-gradient(135deg,#100204,#1a0306); }
+  .card-back.red-mod  { border-color: var(--red);   box-shadow: 0 0 10px rgba(192,57,43,.2); background: linear-gradient(135deg,#0f0303,#160404); }
+  .card-back.blue-mod { border-color: var(--blue);  box-shadow: 0 0 10px rgba(41,128,185,.2); background: linear-gradient(135deg,#020810,#030d18); }
+  .card-back.empty-mod { border-color: #2a2a2a; background: linear-gradient(135deg,#0d0d0d,#111); }
+
+  @keyframes pulseWater {
+    0%,100% { box-shadow: 0 0 20px var(--glow-water); }
+    50%      { box-shadow: 0 0 40px rgba(93,173,226,0.8); }
   }
-
-  .card-back.cross {
-    border-color: var(--red);
-    box-shadow: 0 0 20px var(--glow-red);
-    background: linear-gradient(135deg, #100204, #1a0306);
+  @keyframes pulseCross {
+    0%,100% { box-shadow: 0 0 20px var(--glow-red); }
+    50%      { box-shadow: 0 0 40px rgba(192,57,43,0.8); }
   }
+  .card.revealed .card-back.water { animation: pulseWater 2s infinite; }
+  .card.revealed .card-back.cross { animation: pulseCross 2s infinite; }
 
-  .card-back.red-mod {
-    border-color: var(--red);
-    box-shadow: 0 0 10px rgba(192,57,43,0.2);
-    background: linear-gradient(135deg, #0f0303, #160404);
-  }
-
-  .card-back.blue-mod {
-    border-color: var(--blue);
-    box-shadow: 0 0 10px rgba(41,128,185,0.2);
-    background: linear-gradient(135deg, #020810, #030d18);
-  }
-
-  .card-back.empty-mod {
-    border-color: #2a2a2a;
-    background: linear-gradient(135deg, #0d0d0d, #111);
-  }
-
-  .card-label {
-    font-family: 'Cinzel', serif;
-    font-size: 0.68rem;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    line-height: 1.2;
-    text-align: center;
-  }
-
-  .card-label.red { color: var(--red-light); }
-  .card-label.blue { color: var(--blue-light); }
-  .card-label.dim { color: var(--text-dim); }
-
-  /* PROGRESS DOTS */
-  .progress-row {
-    display: flex;
-    gap: 8px;
-    justify-content: center;
-    margin-bottom: 16px;
-  }
-
-  .progress-group {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-  }
-
-  .progress-label {
-    font-family: 'Cinzel', serif;
-    font-size: 0.55rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-  }
-
-  .dots {
-    display: flex;
-    gap: 6px;
-  }
-
-  .dot {
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    border: 1.5px solid var(--card-border);
-    background: transparent;
-    transition: all 0.3s;
-  }
-
-  .dot.water.filled { background: var(--water); border-color: var(--water); box-shadow: 0 0 8px var(--glow-water); }
-  .dot.cross.filled { background: var(--red); border-color: var(--red); box-shadow: 0 0 8px var(--glow-red); }
-
-  /* BUTTONS */
-  .btn-row {
-    display: flex;
-    gap: 12px;
-    margin-top: 18px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  button {
-    font-family: 'Cinzel', serif;
-    font-size: 0.75rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 10px 22px;
-    border-radius: 6px;
-    cursor: pointer;
-    border: 1px solid;
-    transition: all 0.2s;
-  }
-
-  .btn-primary {
-    background: transparent;
-    border-color: var(--gold);
-    color: var(--gold);
-  }
-
-  .btn-primary:hover {
-    background: var(--gold);
-    color: var(--bg);
-    box-shadow: 0 0 20px var(--glow-gold);
-  }
-
-  .btn-secondary {
-    background: transparent;
-    border-color: var(--text-dim);
-    color: var(--text-dim);
-  }
-
-  .btn-secondary:hover {
-    border-color: var(--text);
-    color: var(--text);
-  }
-
-  /* Overlay for locked */
   .overlay-lock {
     display: none;
     position: absolute;
@@ -390,37 +267,30 @@
     font-size: 3rem;
     backdrop-filter: blur(2px);
   }
-
   .overlay-lock.visible { display: flex; }
 
-  /* Pulse animation for win/lose cards */
-  @keyframes pulseWater {
-    0%, 100% { box-shadow: 0 0 20px var(--glow-water); }
-    50% { box-shadow: 0 0 40px rgba(93,173,226,0.8); }
+  .btn-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
   }
-
-  @keyframes pulseCross {
-    0%, 100% { box-shadow: 0 0 20px var(--glow-red); }
-    50% { box-shadow: 0 0 40px rgba(192,57,43,0.8); }
+  button {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 1px solid;
+    transition: all 0.2s;
   }
-
-  .card.revealed .card-back.water { animation: pulseWater 2s infinite; }
-  .card.revealed .card-back.cross { animation: pulseCross 2s infinite; }
-
-  /* divider */
-  .divider {
-    width: 80px;
-    height: 1px;
-    background: linear-gradient(to right, transparent, var(--gold), transparent);
-    margin: 0 auto 16px;
-  }
-
-  @media (max-width: 480px) {
-    .grid { gap: 8px; width: 98vw; }
-    .card-front::after { font-size: 1.4rem; }
-    .card-back { font-size: 1.6rem; }
-    .card-label { font-size: 0.6rem; }
-  }
+  .btn-primary  { background: transparent; border-color: var(--gold);     color: var(--gold); }
+  .btn-primary:hover  { background: var(--gold); color: var(--bg); box-shadow: 0 0 20px var(--glow-gold); }
+  .btn-secondary { background: transparent; border-color: var(--text-dim); color: var(--text-dim); }
+  .btn-secondary:hover { border-color: var(--text); color: var(--text); }
 </style>
 </head>
 <body>
@@ -428,38 +298,34 @@
 <h1>CUM OR LOCK</h1>
 <div class="divider"></div>
 
-<!-- Stats -->
 <div class="status-bar">
   <div class="stat">
     <div class="stat-label">Jours de blocage</div>
-    <div class="stat-value red" id="stat-days">0</div>
+    <div class="stat-value red" id="stat-days">1</div>
   </div>
   <div class="stat">
     <div class="stat-label">Minutes de plaisir</div>
-    <div class="stat-value blue" id="stat-mins">5</div>
+    <div class="stat-value blue" id="stat-mins">2</div>
   </div>
 </div>
 
-<!-- Lock banner -->
-<div class="lock-banner" id="lock-banner">
-  <div class="lock-icon">🔒</div>
-  <div class="lock-title">Jeu verrouillé</div>
-  <div class="lock-desc" id="lock-desc">Tu dois te masturber sans jouir chaque soir.</div>
-  <div class="unlock-time" id="unlock-time"></div>
+<div class="banner banner-lock" id="banner-lock">
+  <div class="banner-icon">🔒</div>
+  <div class="banner-title">Jeu verrouillé</div>
+  <div class="banner-desc" id="lock-desc"></div>
+  <div class="banner-time" id="lock-time"></div>
 </div>
 
-<!-- Win banner -->
-<div class="win-banner" id="win-banner">
-  <div class="win-icon">💦</div>
-  <div class="win-title">Tu peux jouir !</div>
-  <div class="win-desc" id="win-desc"></div>
+<div class="banner banner-win" id="banner-win">
+  <div class="banner-icon">💦</div>
+  <div class="banner-title">Tu peux jouir !</div>
+  <div class="banner-desc" id="win-desc"></div>
 </div>
 
-<!-- Progress dots -->
 <div class="progress-row">
   <div class="progress-group">
     <div class="progress-label">💦 Trouvés</div>
-    <div class="dots" id="dots-water">
+    <div class="dots">
       <div class="dot water" id="w0"></div>
       <div class="dot water" id="w1"></div>
       <div class="dot water" id="w2"></div>
@@ -467,7 +333,7 @@
   </div>
   <div class="progress-group">
     <div class="progress-label">❌ Trouvés</div>
-    <div class="dots" id="dots-cross">
+    <div class="dots">
       <div class="dot cross" id="c0"></div>
       <div class="dot cross" id="c1"></div>
       <div class="dot cross" id="c2"></div>
@@ -475,75 +341,64 @@
   </div>
 </div>
 
-<!-- Grid -->
 <div class="grid-wrap">
   <div class="grid" id="grid"></div>
-  <div class="overlay-lock" id="overlay-lock" title="Jeu verrouillé">🔒</div>
+  <div class="overlay-lock" id="overlay-lock">🔒</div>
 </div>
 
-<!-- Buttons -->
 <div class="btn-row">
-  <button class="btn-primary" id="btn-reset">↺ Nouveau jeu</button>
-  <button class="btn-secondary" id="btn-reset-save">⚠ Tout réinitialiser</button>
+  <button class="btn-primary"   id="btn-new">↺ Nouveau jeu</button>
+  <button class="btn-secondary" id="btn-wipe">⚠ Tout réinitialiser</button>
 </div>
 
 <script>
-// ===== STATE =====
-const SAVE_KEY = 'jeu_desir_v3';
+const SAVE_KEY = 'cum_or_lock_v1';
 
 function defaultState() {
   return {
     locked: false,
-    lockDays: 0,
-    lockUntil: null,  // ISO date string
-    baseMins: 2,
-    baseDays: 1,
-    // current game
-    board: null,       // array of {type, label, revealed}
+    lockUntil: null,
+    currentMins: 2,
+    currentDays: 1,
+    board: null,
     waterCount: 0,
     crossCount: 0,
-    currentMins: 2,
-    currentDays: 0,
     gameOver: false,
-    gameResult: null,  // 'win' | 'lose'
+    gameResult: null,
   };
 }
+
+let state = defaultState();
 
 function loadState() {
   try {
     const s = localStorage.getItem(SAVE_KEY);
-    if (s) return Object.assign(defaultState(), JSON.parse(s));
+    if (s) state = Object.assign(defaultState(), JSON.parse(s));
   } catch(e) {}
-  return defaultState();
 }
 
 function saveState() {
-  localStorage.setItem(SAVE_KEY, JSON.stringify(state));
+  try { localStorage.setItem(SAVE_KEY, JSON.stringify(state)); } catch(e) {}
 }
 
-let state = loadState();
-
-// ===== BOARD GENERATION =====
-const CARD_TYPES = [
-  { type: 'water', label: '💦', cssClass: 'water', count: 3 },
-  { type: 'cross', label: '❌', cssClass: 'cross', count: 3 },
-  { type: 'red1', label: '🔴 +1 jour', cssClass: 'red-mod', count: 2 },
-  { type: 'red2', label: '🔴 +2 jours', cssClass: 'red-mod', count: 1 },
-  { type: 'redx2', label: '🔴 ×2 jours', cssClass: 'red-mod', count: 1 },
-  { type: 'blue2', label: '🔵 +2 min', cssClass: 'blue-mod', count: 2 },
-  { type: 'blue5', label: '🔵 +5 min', cssClass: 'blue-mod', count: 1 },
-  { type: 'bluex2', label: '🔵 ×2 min', cssClass: 'blue-mod', count: 1 },
-  { type: 'empty', label: '—', cssClass: 'empty-mod', count: 2 },
+// ===== BOARD =====
+const CARDS = [
+  { type:'water',  css:'water',     count:3 },
+  { type:'cross',  css:'cross',     count:3 },
+  { type:'red1',   css:'red-mod',   count:2 },
+  { type:'red2',   css:'red-mod',   count:1 },
+  { type:'redx2',  css:'red-mod',   count:1 },
+  { type:'blue2',  css:'blue-mod',  count:2 },
+  { type:'blue5',  css:'blue-mod',  count:1 },
+  { type:'bluex2', css:'blue-mod',  count:1 },
+  { type:'empty',  css:'empty-mod', count:2 },
 ];
 
 function generateBoard() {
   let cards = [];
-  for (const t of CARD_TYPES) {
-    for (let i = 0; i < t.count; i++) {
-      cards.push({ type: t.type, cssClass: t.cssClass, label: labelFor(t.type), revealed: false });
-    }
-  }
-  // shuffle
+  for (const c of CARDS)
+    for (let i = 0; i < c.count; i++)
+      cards.push({ type: c.type, css: c.css, revealed: false });
   for (let i = cards.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [cards[i], cards[j]] = [cards[j], cards[i]];
@@ -551,27 +406,19 @@ function generateBoard() {
   return cards;
 }
 
-function labelFor(type) {
+function symbolFor(type) {
+  const R = `color:var(--red-light);font-family:Cinzel,serif;font-size:2rem;font-weight:700`;
+  const B = `color:var(--blue-light);font-family:Cinzel,serif;font-size:2rem;font-weight:700`;
   const map = {
-    water: '💦', cross: '❌',
-    red1: '+1 jour', red2: '+2 jours', redx2: '×2 jours',
-    blue2: '+2 min', blue5: '+5 min', bluex2: '×2 min',
-    empty: '—',
-  };
-  return map[type] || '';
-}
-
-function emojiFor(type) {
-  const map = {
-    water: '💦',
-    cross: '❌',
-    red1: '<span style="color:var(--red-light);font-family:Cinzel,serif;font-size:2rem;font-weight:700;">+1</span>',
-    red2: '<span style="color:var(--red-light);font-family:Cinzel,serif;font-size:2rem;font-weight:700;">+2</span>',
-    redx2: '<span style="color:var(--red-light);font-family:Cinzel,serif;font-size:2rem;font-weight:700;">×2</span>',
-    blue2: '<span style="color:var(--blue-light);font-family:Cinzel,serif;font-size:2rem;font-weight:700;">+2</span>',
-    blue5: '<span style="color:var(--blue-light);font-family:Cinzel,serif;font-size:2rem;font-weight:700;">+5</span>',
-    bluex2: '<span style="color:var(--blue-light);font-family:Cinzel,serif;font-size:2rem;font-weight:700;">×2</span>',
-    empty: '<span style="color:var(--text-dim);font-size:1.4rem;">—</span>',
+    water:  '💦',
+    cross:  '❌',
+    red1:   `<span style="${R}">+1</span>`,
+    red2:   `<span style="${R}">+2</span>`,
+    redx2:  `<span style="${R}">×2</span>`,
+    blue2:  `<span style="${B}">+2</span>`,
+    blue5:  `<span style="${B}">+5</span>`,
+    bluex2: `<span style="${B}">×2</span>`,
+    empty:  `<span style="color:var(--text-dim);font-size:1.4rem">—</span>`,
   };
   return map[type] || '';
 }
@@ -580,78 +427,51 @@ function initGame() {
   state.board = generateBoard();
   state.waterCount = 0;
   state.crossCount = 0;
-  state.currentMins = state.baseMins;
-  state.currentDays = state.baseDays;
+  state.currentMins = 2;
+  state.currentDays = 1;
   state.gameOver = false;
   state.gameResult = null;
   saveState();
   render();
 }
 
-// ===== LOCK CHECK =====
 function checkLockExpiry() {
   if (state.locked && state.lockUntil) {
-    const now = new Date();
-    const until = new Date(state.lockUntil);
-    if (now >= until) {
-      state.locked = false;
-      state.lockDays = 0;
+    if (new Date() >= new Date(state.lockUntil)) {
+      state.locked    = false;
       state.lockUntil = null;
-      state.board = null;
-      state.gameOver = false;
+      state.board     = null;
+      state.gameOver  = false;
       state.gameResult = null;
       saveState();
     }
   }
 }
 
-// ===== CARD CLICK =====
 function revealCard(index) {
   if (state.locked || state.gameOver) return;
   const card = state.board[index];
   if (card.revealed) return;
   card.revealed = true;
 
-  // Apply effect
   switch (card.type) {
-    case 'water':
-      state.waterCount++;
-      break;
-    case 'cross':
-      state.crossCount++;
-      break;
-    case 'red1':
-      state.currentDays += 1;
-      break;
-    case 'red2':
-      state.currentDays += 2;
-      break;
-    case 'redx2':
-      state.currentDays = state.currentDays * 2;
-      break;
-    case 'blue2':
-      state.currentMins += 2;
-      break;
-    case 'blue5':
-      state.currentMins += 5;
-      break;
-    case 'bluex2':
-      state.currentMins = state.currentMins * 2;
-      break;
-    case 'empty':
-      break;
+    case 'water':  state.waterCount++; break;
+    case 'cross':  state.crossCount++; break;
+    case 'red1':   state.currentDays += 1; break;
+    case 'red2':   state.currentDays += 2; break;
+    case 'redx2':  state.currentDays *= 2;  break;
+    case 'blue2':  state.currentMins += 2; break;
+    case 'blue5':  state.currentMins += 5; break;
+    case 'bluex2': state.currentMins *= 2;  break;
   }
 
-  // Check win/lose
   if (state.waterCount >= 3) {
     state.gameOver = true;
     state.gameResult = 'win';
   } else if (state.crossCount >= 3) {
     state.gameOver = true;
     state.gameResult = 'lose';
-    // Lock the game
     state.locked = true;
-    state.lockDays = state.currentDays;
     const until = new Date();
     until.setDate(until.getDate() + state.currentDays);
     until.setHours(0, 0, 0, 0);
@@ -662,91 +482,62 @@ function revealCard(index) {
   render();
 }
 
-// ===== RENDER =====
 function render() {
   checkLockExpiry();
-  renderStats();
-  renderBanners();
-  renderGrid();
-  renderDots();
-  renderLockOverlay();
-}
 
-function renderStats() {
   document.getElementById('stat-days').textContent = state.currentDays;
   document.getElementById('stat-mins').textContent = state.currentMins;
-}
 
-function renderBanners() {
-  const lockBanner = document.getElementById('lock-banner');
-  const winBanner = document.getElementById('win-banner');
+  const bLock = document.getElementById('banner-lock');
+  const bWin  = document.getElementById('banner-win');
 
   if (state.locked) {
-    lockBanner.classList.add('visible');
-    winBanner.classList.remove('visible');
-    const until = new Date(state.lockUntil);
-    const now = new Date();
-    const diffMs = until - now;
-    const diffDays = Math.ceil(diffMs / (1000*60*60*24));
+    bLock.classList.add('visible');
+    bWin.classList.remove('visible');
+    const until    = new Date(state.lockUntil);
+    const diffDays = Math.ceil((until - new Date()) / 86400000);
     document.getElementById('lock-desc').textContent =
       `Tu dois te masturber sans jouir chaque soir pendant ${state.currentMins} minutes.`;
-    document.getElementById('unlock-time').textContent =
+    document.getElementById('lock-time').textContent =
       `Débloqué dans ${diffDays} jour${diffDays > 1 ? 's' : ''} — le ${until.toLocaleDateString('fr-FR', {weekday:'long', day:'numeric', month:'long'})}`;
   } else if (state.gameResult === 'win') {
-    lockBanner.classList.remove('visible');
-    winBanner.classList.add('visible');
+    bLock.classList.remove('visible');
+    bWin.classList.add('visible');
     document.getElementById('win-desc').textContent =
       `Masturbation d'abord : ${state.currentMins} minutes de plaisir, puis tu peux jouir. Bonne récompense !`;
   } else {
-    lockBanner.classList.remove('visible');
-    winBanner.classList.remove('visible');
+    bLock.classList.remove('visible');
+    bWin.classList.remove('visible');
   }
-}
 
-function renderGrid() {
+  for (let i = 0; i < 3; i++) {
+    document.getElementById('w'+i).className = 'dot water' + (i < state.waterCount ? ' filled' : '');
+    document.getElementById('c'+i).className = 'dot cross' + (i < state.crossCount ? ' filled' : '');
+  }
+
   const grid = document.getElementById('grid');
   if (!state.board) {
-    grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:var(--text-dim);font-style:italic;padding:20px;">Lance un nouveau jeu pour commencer.</p>';
-    return;
-  }
-  grid.innerHTML = '';
-  state.board.forEach((card, i) => {
-    const el = document.createElement('div');
-    el.className = 'card' + (card.revealed ? ' revealed' : '') + ((state.gameOver || state.locked) && !card.revealed ? ' disabled' : '');
-    el.innerHTML = `
-      <div class="card-inner">
-        <div class="card-front"></div>
-        <div class="card-back ${card.cssClass}">
-          ${emojiFor(card.type)}
-        </div>
-      </div>`;
-    if (!card.revealed && !state.gameOver && !state.locked) {
-      el.addEventListener('click', () => revealCard(i));
-    }
-    grid.appendChild(el);
-  });
-}
-
-function renderDots() {
-  for (let i = 0; i < 3; i++) {
-    const wd = document.getElementById('w' + i);
-    const cd = document.getElementById('c' + i);
-    wd.className = 'dot water' + (i < state.waterCount ? ' filled' : '');
-    cd.className = 'dot cross' + (i < state.crossCount ? ' filled' : '');
-  }
-}
-
-function renderLockOverlay() {
-  const ov = document.getElementById('overlay-lock');
-  if (state.locked) {
-    ov.classList.add('visible');
+    grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:var(--text-dim);font-style:italic;padding:20px">Lance un nouveau jeu.</p>';
   } else {
-    ov.classList.remove('visible');
+    grid.innerHTML = '';
+    state.board.forEach((card, i) => {
+      const el = document.createElement('div');
+      const disabled = (state.gameOver || state.locked) && !card.revealed;
+      el.className = 'card' + (card.revealed ? ' revealed' : '') + (disabled ? ' disabled' : '');
+      el.innerHTML = `<div class="card-inner">
+        <div class="card-front"></div>
+        <div class="card-back ${card.css}">${symbolFor(card.type)}</div>
+      </div>`;
+      if (!card.revealed && !state.gameOver && !state.locked)
+        el.addEventListener('click', () => revealCard(i));
+      grid.appendChild(el);
+    });
   }
+
+  document.getElementById('overlay-lock').classList.toggle('visible', state.locked);
 }
 
-// ===== BUTTONS =====
-document.getElementById('btn-reset').addEventListener('click', () => {
+document.getElementById('btn-new').addEventListener('click', () => {
   if (state.locked) {
     alert('Le jeu est verrouillé ! Tu ne peux pas relancer avant la date de déblocage.');
     return;
@@ -754,15 +545,16 @@ document.getElementById('btn-reset').addEventListener('click', () => {
   initGame();
 });
 
-document.getElementById('btn-reset-save').addEventListener('click', () => {
+document.getElementById('btn-wipe').addEventListener('click', () => {
   if (confirm('Effacer toute la progression (y compris le verrouillage) ?')) {
-    localStorage.removeItem(SAVE_KEY);
+    try { localStorage.removeItem(SAVE_KEY); } catch(e) {}
     state = defaultState();
     initGame();
   }
 });
 
-// ===== INIT =====
+// ===== START =====
+loadState();
 checkLockExpiry();
 if (!state.board && !state.locked) {
   initGame();
