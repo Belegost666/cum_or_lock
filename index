@@ -94,7 +94,7 @@
 
   .stat-label {
     font-family: 'Cinzel', serif;
-    font-size: 0.6rem;
+    font-size: 0.8rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--text-dim);
@@ -135,7 +135,7 @@
     margin-bottom: 4px;
   }
   .lock-banner .lock-desc {
-    font-size: 0.95rem;
+    font-size: 1.2rem;
     color: var(--text-dim);
     font-style: italic;
     line-height: 1.5;
@@ -171,7 +171,7 @@
     margin-bottom: 4px;
   }
   .win-banner .win-desc {
-    font-size: 0.95rem;
+    font-size: 1.2rem;
     color: var(--text-dim);
     font-style: italic;
     line-height: 1.5;
@@ -696,7 +696,7 @@ function renderBanners() {
     lockBanner.classList.remove('visible');
     winBanner.classList.add('visible');
     document.getElementById('win-desc').textContent =
-      `Masturbation d'abord : ${state.currentMins} minutes de plaisir, puis tu peux jouir. Bonne récompense ! 🎉`;
+      `Masturbation d'abord : ${state.currentMins} minutes de plaisir, puis tu peux jouir. Bonne récompense !`;
   } else {
     lockBanner.classList.remove('visible');
     winBanner.classList.remove('visible');
